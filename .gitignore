@@ -1,5 +1,5 @@
 py_project/.env
-py_project/.vscode
-py_project/__pycache__
-sql_scripts
-pkl_files
+py_project/.vscode/
+py_project/__pycache__/
+sql_scripts/
+pkl_files/
