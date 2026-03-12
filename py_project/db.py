@@ -12,11 +12,11 @@ load_dotenv()
 def _get_config(env_type="train"):
     suffix = f"_{env_type.upper()}"
     return {
-        "host": os.getenv(f"DB_HOST{suffix}", "localhost"),
-        "port": int(os.getenv(f"DB_PORT{suffix}", 3306)),
-        "user": os.getenv(f"DB_USER{suffix}", "root"),
+        "host": os.getenv(f"DB_HOST{suffix}", ""),
+        "port": int(os.getenv(f"DB_PORT{suffix}")),
+        "user": os.getenv(f"DB_USER{suffix}", ""),
         "password": os.getenv(f"DB_PASSWORD{suffix}", ""),
-        "database": os.getenv(f"DB_NAME{suffix}", "ban_terem"),
+        "database": os.getenv(f"DB_NAME{suffix}", ""),
     }
 
 # direct MySQL connector
