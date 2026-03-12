@@ -103,7 +103,7 @@ def main():
 
     print("\nSaving recommendation dictionaries...")
     for name, data in recs.items():
-        fname = f"../pkl_files/recs_{name}.pkl"
+        fname = f"pkl_files/recs_{name}.pkl"
         with open(fname, "wb") as f:
             pickle.dump(data, f)
         print(f"✓ {fname}")
@@ -114,19 +114,19 @@ def main():
     freq = np.diag(co)
     N = X.shape[0]
     print("\nComputing score matrices...")
-    save_scores("../pkl_files/scores_co.pkl", co, product_ids, "co")
+    save_scores("pkl_files/scores_co.pkl", co, product_ids, "co")
     norm = np.sqrt(freq + eps)
-    save_scores("../pkl_files/scores_cos.pkl", co / norm[:, None] / norm[None, :], product_ids, "cosine")
+    save_scores("pkl_files/scores_cos.pkl", co / norm[:, None] / norm[None, :], product_ids, "cosine")
     denom = np.power(freq + eps, ALPHA)
-    save_scores("../pkl_files/scores_gc.pkl", co / denom[:, None] / denom[None, :], product_ids, "g_cosine")
-    save_scores("../pkl_files/scores_lift.pkl", (co * N) / ((freq[:, None] * freq[None, :]) + eps), product_ids, "lift")
+    save_scores("pkl_files/scores_gc.pkl", co / denom[:, None] / denom[None, :], product_ids, "g_cosine")
+    save_scores("pkl_files/scores_lift.pkl", (co * N) / ((freq[:, None] * freq[None, :]) + eps), product_ids, "lift")
     p_ij = co / N
     p_i = freq / N
     scores_pmi = np.log((p_ij + eps) / ((p_i[:, None] * p_i[None, :]) + eps))
-    save_scores("../pkl_files/scores_pmi.pkl", np.maximum(scores_pmi, 0), product_ids, "pmi")
+    save_scores("pkl_files/scores_pmi.pkl", np.maximum(scores_pmi, 0), product_ids, "pmi")
     popularity = freq / (freq.max() + eps)
     pop_matrix = np.tile(popularity, (len(popularity), 1))
-    save_scores("../pkl_files/scores_hybrid.pkl", LAM * (co / denom[:, None] / denom[None, :]) + (1 - LAM) * pop_matrix, product_ids, "hybrid")
+    save_scores("pkl_files/scores_hybrid.pkl", LAM * (co / denom[:, None] / denom[None, :]) + (1 - LAM) * pop_matrix, product_ids, "hybrid")
     print("\n", "=" * 60, "\nTRAINING COMPLETED\n", "=" * 60)
 
 

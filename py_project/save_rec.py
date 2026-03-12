@@ -77,8 +77,8 @@ def export_recommendations_sql(recs, scores_data, K, filename):
 
 def save_recommendations_to_sql():
     print("=" * 60, "\nSAVING RECOMMENDATIONS TO SQL\n", "=" * 60)
-    pkl_recs = f"../pkl_files/recs_{BEST_RECS.replace('-', '_')}.pkl"
-    pkl_scores = f"../pkl_files/scores_{BEST_RECS.replace('-', '_')}.pkl"
+    pkl_recs = f"pkl_files/recs_{BEST_RECS.replace('-', '_')}.pkl"
+    pkl_scores = f"pkl_files/scores_{BEST_RECS.replace('-', '_')}.pkl"
     try:
         with open(pkl_recs, "rb") as f:
             recs = pickle.load(f)
@@ -93,7 +93,7 @@ def save_recommendations_to_sql():
     except FileNotFoundError:
         print("Scores file not found")
         return
-    export_recommendations_sql(recs, scores_data, K, "../sql_scripts/recommendations.sql")
+    export_recommendations_sql(recs, scores_data, K, "sql_scripts/recommendations.sql")
     print("\n✓ recommendations.sql created")
 
 

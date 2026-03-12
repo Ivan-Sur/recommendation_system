@@ -91,12 +91,12 @@ def run_test():
     print("\nLoading saved recommendations...")
     recs = {}
     files = {
-        "occurrence": "../pkl_files/recs_co.pkl",
-        "cosine": "../pkl_files/recs_cos.pkl",
-        "g_cosine": "../pkl_files/recs_gc.pkl",
-        "lift": "../pkl_files/recs_lift.pkl",
-        "pmi": "../pkl_files/recs_pmi.pkl",
-        "hybrid": "../pkl_files/recs_hybrid.pkl",
+        "occurrence": "pkl_files/recs_co.pkl",
+        "cosine": "pkl_files/recs_cos.pkl",
+        "g_cosine": "pkl_files/recs_gc.pkl",
+        "lift": "pkl_files/recs_lift.pkl",
+        "pmi": "pkl_files/recs_pmi.pkl",
+        "hybrid": "pkl_files/recs_hybrid.pkl",
     }
     for name, f in files.items():
         try:
